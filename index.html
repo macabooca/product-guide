@@ -17,8 +17,8 @@ var d=p==='dark'||(p==='auto'&&window.matchMedia&&matchMedia('(prefers-color-sch
 document.documentElement.setAttribute('data-theme',d?'dark':'light');})();
 </script>
 <style>
-:root{--page:#ffffff;--card:#ffffff;--soft:#EEF1F0;--ink:#16302B;--mute:#5E726D;--line:#DCE4E1;--teal:#0F766E;--onteal:#ffffff;--danger:#B3261E;--redbtn:#D93025;--sbBg:#ffffff;--sbBorder:#F3D9B5;--sbText:#8A7358;--lockBg:#FFD98A;--lockInk:#5A3E00;--badgeBg:#16302B;--badgeInk:#ffffff;--allbg:#16302B;--allfg:#ffffff;color-scheme:light}
-:root[data-theme="dark"]{--page:#000000;--card:#141414;--soft:#1A1A1A;--ink:#ffffff;--mute:#A8B4B0;--line:#2A2A2A;--teal:#5FD1C4;--onteal:#06201C;--danger:#F2877F;--sbBg:#141414;--sbBorder:#5E4B2B;--sbText:#B5A180;--allbg:#E6EDEB;--allfg:#111111;color-scheme:dark}
+:root{--page:#ffffff;--card:#ffffff;--soft:#EEF1F0;--ink:#16302B;--mute:#5E726D;--line:#DCE4E1;--teal:#0F766E;--onteal:#ffffff;--danger:#B3261E;--redbtn:#D93025;--sbBg:#ffffff;--sbBorder:#F3D9B5;--sbText:#8A7358;--lockBg:#FFD98A;--lockInk:#5A3E00;--badgeBg:#16302B;--badgeInk:#ffffff;--allbg:#16302B;--allfg:#ffffff;--hdThumb:rgba(176,138,56,.5);--hdThumbOn:rgba(176,138,56,.68);--hdTrack:rgba(176,138,56,.16);color-scheme:light}
+:root[data-theme="dark"]{--page:#000000;--card:#141414;--soft:#1A1A1A;--ink:#ffffff;--mute:#A8B4B0;--line:#2A2A2A;--teal:#5FD1C4;--onteal:#06201C;--danger:#F2877F;--sbBg:#141414;--sbBorder:#5E4B2B;--sbText:#B5A180;--allbg:#E6EDEB;--allfg:#111111;--hdThumb:rgba(255,217,138,.38);--hdThumbOn:rgba(255,217,138,.56);--hdTrack:rgba(255,217,138,.11);color-scheme:dark}
 .cc0{--cbg:#FBE3D3;--cfg:#B84A1B}.cc1{--cbg:#D7EEE4;--cfg:#1F5E4B}.cc2{--cbg:#F9D9E4;--cfg:#A63A66}.cc3{--cbg:#FBEBCB;--cfg:#8A5A0F}.cc4{--cbg:#DCEBF7;--cfg:#255F94}.cc5{--cbg:#E6E3F5;--cfg:#4B3FA0}.cc6{--cbg:#FADBD8;--cfg:#A32B20}.cc7{--cbg:#D3F0F2;--cfg:#176B73}.cc8{--cbg:#E6F2CF;--cfg:#4B6B10}.cc9{--cbg:#EADBCB;--cfg:#6B4423}.cc10{--cbg:#E1E6EB;--cfg:#3F4F61}.cc11{--cbg:#F3D9F0;--cfg:#8A2C80}
 :root[data-theme="dark"] .cc0{--cbg:#3A2418;--cfg:#F2A47C}:root[data-theme="dark"] .cc1{--cbg:#17332B;--cfg:#7FD1B0}:root[data-theme="dark"] .cc2{--cbg:#3A1A27;--cfg:#F29AB9}:root[data-theme="dark"] .cc3{--cbg:#35290F;--cfg:#F2C46D}:root[data-theme="dark"] .cc4{--cbg:#15293B;--cfg:#8CC2EE}:root[data-theme="dark"] .cc5{--cbg:#25214A;--cfg:#B0A8F0}
 :root[data-theme="dark"] .cc6{--cbg:#3A1D1A;--cfg:#F59A90}:root[data-theme="dark"] .cc7{--cbg:#12333A;--cfg:#7FD6DE}:root[data-theme="dark"] .cc8{--cbg:#2A3512;--cfg:#C2DE80}:root[data-theme="dark"] .cc9{--cbg:#33261A;--cfg:#D9B08A}:root[data-theme="dark"] .cc10{--cbg:#26303A;--cfg:#B4C4D4}:root[data-theme="dark"] .cc11{--cbg:#3A1F37;--cfg:#E79DDD}
@@ -113,6 +113,7 @@ textarea.in{resize:vertical;min-height:90px}
 .mbox h3{margin:0 0 10px;font-size:16px;text-align:center}
 .mbox p{margin:0 0 4px;font-size:14px;line-height:1.8;color:var(--mute);text-align:center}
 .pin{width:100%;text-align:center;font-size:26px;letter-spacing:12px;direction:ltr;background:var(--soft);border:0;border-radius:12px;padding:10px;color:var(--ink);outline:0;font-family:inherit}
+.pbar{height:8px;border-radius:4px;background:var(--soft);overflow:hidden;margin:10px 0 4px}.pbar i{display:block;height:100%;width:0;background:var(--teal);transition:width .2s}
 .err{color:var(--danger);font-size:13px;text-align:center;min-height:22px;margin-top:6px}
 .mi{display:block;width:100%;text-align:right;border:0;background:var(--soft);border-radius:12px;padding:12px 14px;font-size:14.5px;margin-top:8px}
 .big{display:flex;align-items:center;gap:12px;width:100%;text-align:right;border:0;background:var(--soft);border-radius:14px;padding:14px;font-size:15px;font-weight:700;margin-top:8px}
@@ -127,8 +128,11 @@ textarea.in{resize:vertical;min-height:90px}
 .crow span{flex:1;font-size:14px;font-weight:700}
 #hd{position:fixed;right:0;top:0;width:30px;height:112px;z-index:40;opacity:0;transition:opacity .3s;pointer-events:none;touch-action:none}
 #hd.show{opacity:1;pointer-events:auto}
-#hdb{position:absolute;right:3px;top:0;width:10px;height:96px;border-radius:5px;background:var(--lockBg);opacity:.6;transition:width .15s,height .15s,opacity .15s}
-#hd.grab #hdb{width:16px;height:112px;opacity:.76}
+#hdb{position:absolute;right:3px;top:0;width:10px;height:96px;border-radius:5px;background:var(--hdThumb);transition:width .15s,height .15s,background .15s}
+#hd.grab #hdb{width:16px;height:112px;background:var(--hdThumbOn)}
+#hdt{position:fixed;right:6px;top:0;width:4px;height:0;border-radius:2px;background:var(--hdTrack);opacity:0;transition:opacity .3s,width .15s,right .15s;pointer-events:none;z-index:39}
+#hdt.show{opacity:1}
+#hdt.grab{width:6px;right:5px}
 #toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 92px);background:rgba(20,30,28,.94);color:#fff;font-size:13.5px;padding:9px 16px;border-radius:12px;z-index:60;opacity:0;transition:opacity .25s;pointer-events:none;max-width:86vw;text-align:center}
 #toast.show{opacity:1}
 </style>
@@ -161,6 +165,7 @@ textarea.in{resize:vertical;min-height:90px}
 <button id="fab" class="fab" aria-label="إضافة منتج" hidden></button>
 <input id="restoreIn" type="file" accept="application/json,.json" hidden>
 <input id="bulkIn" type="file" accept="image/*" multiple hidden>
+<div id="hdt"></div>
 <div id="hd"><div id="hdb"></div></div>
 <div id="toast"></div>
 <div id="modalRoot"></div>
@@ -524,17 +529,24 @@ function saveForm(){
 }
 
 /* add choice and bulk add */
-function addChoice(){modal(function(b,close){b.innerHTML='<h3>إضافة</h3><button class="big" id="aOne">'+ic('plus',24)+'<span>منتج واحد<small>أدخل كل المعلومات الآن</small></span></button><button class="big" id="aMany">'+ic('gallery',24)+'<span>عدة منتجات<small>اختر عدة صور وتُنشأ المنتجات فورا</small></span></button><div class="btns"><button class="btn" id="aNo">إلغاء</button></div>';b.querySelector('#aOne').onclick=function(){close();nav({v:'form',id:null,from:'list'});};b.querySelector('#aMany').onclick=function(){close();$('#bulkIn').click();};b.querySelector('#aNo').onclick=function(){close();};});}
+function addChoice(){modal(function(b,close){b.innerHTML='<h3>إضافة</h3><button class="big" id="aOne">'+ic('plus',24)+'<span>منتج واحد<small>أدخل كل المعلومات الآن</small></span></button><button class="big" id="aMany">'+ic('gallery',24)+'<span>عدة منتجات<small>اختر أي عدد من الصور وتُنشأ المنتجات فورا</small></span></button><div class="btns"><button class="btn" id="aNo">إلغاء</button></div>';b.querySelector('#aOne').onclick=function(){close();nav({v:'form',id:null,from:'list'});};b.querySelector('#aMany').onclick=function(){close();$('#bulkIn').click();};b.querySelector('#aNo').onclick=function(){close();};});}
+function progressBox(total,onStop){
+ var ov=document.createElement('div');ov.className='ov';
+ ov.innerHTML='<div class="mbox"><h3>جاري إضافة المنتجات</h3><p id="pgT">0 من '+total+'</p><div class="pbar"><i id="pgB"></i></div><div class="btns" style="margin-top:6px"><button class="btn" id="pgS">إيقاف</button></div></div>';
+ $('#modalRoot').appendChild(ov);
+ ov.querySelector('#pgS').onclick=function(){this.disabled=true;this.textContent='جاري الإيقاف…';onStop();};
+ return {set:function(k){ov.querySelector('#pgT').textContent=k+' من '+total;ov.querySelector('#pgB').style.width=Math.round(k/total*100)+'%';},close:function(){ov.remove();}};
+}
 $('#bulkIn').onchange=function(){
  var fs=Array.prototype.slice.call(this.files);this.value='';
  if(!fs.length)return;
- if(fs.length>30){toast('الحد الأقصى 30 صورة في المرة الواحدة');fs=fs.slice(0,30);}
  var used={};products.forEach(function(p){used[p._nn]=1;});
  var n=0;function nextName(){var nm;do{n++;nm='منتج جديد '+n;}while(used[norm(nm)]);used[norm(nm)]=1;return nm;}
- var total=fs.length,done=0,now=Date.now(),failed=0;
+ var total=fs.length,done=0,now=Date.now(),failed=0,stop=false;
+ var pb=progressBox(total,function(){stop=true;});
  var chain=Promise.resolve();
- fs.forEach(function(f,i){chain=chain.then(function(){toast('جاري إضافة '+(done+1)+' من '+total);return fileToData(f,900,0.82).then(function(main){return shrink(main,360,0.75).then(function(thumb){var id='p'+(now+i).toString(36)+Math.random().toString(36).slice(2,6);var name=nextName();var p={id:id,name:name,price:'',desc:'',long:'',tip:'',cat:selCat||'',thumb:thumb,xthumbs:[],created:now+(total-i),updated:now,auto:true,autoName:name};return putMany([['products',p],['images',{id:id,main:main,extra:[]}]]).then(function(){done++;});});});}).catch(function(){failed++;});});
- chain.then(loadProducts).then(function(){listScroll=0;if(st.v==='list'){renderList();window.scrollTo(0,0);}toast(done?('تمت إضافة '+done+' منتج'+(failed?' وتعذر '+failed:'')):'تعذرت الإضافة');});
+ fs.forEach(function(f,i){chain=chain.then(function(){if(stop)return;pb.set(done+failed+1);return fileToData(f,900,0.82).then(function(main){return shrink(main,360,0.75).then(function(thumb){var id='p'+(now+i).toString(36)+Math.random().toString(36).slice(2,6);var name=nextName();var p={id:id,name:name,price:'',desc:'',long:'',tip:'',cat:selCat||'',thumb:thumb,xthumbs:[],created:now+(total-i),updated:now,auto:true,autoName:name};return putMany([['products',p],['images',{id:id,main:main,extra:[]}]]).then(function(){done++;});});});}).catch(function(){failed++;});});
+ chain.then(function(){pb.close();return loadProducts();}).then(function(){listScroll=0;if(st.v==='list'){renderList();window.scrollTo(0,0);}toast(done?('تمت إضافة '+done+' منتج'+(stop?' (تم الإيقاف)':'')+(failed?' وتعذر '+failed:'')):(stop?'تم الإيقاف':'تعذرت الإضافة'));});
 };
 
 /* menu, backup, restore */
@@ -561,17 +573,19 @@ $('#restoreIn').onchange=function(){
 };
 
 /* scroll handle */
-var hd=$('#hd'),ht,dragH=false,curTop=0,dOff=0;
+var hd=$('#hd'),hdt=$('#hdt'),ht,dragH=false,curTop=0,dOff=0;
 function hdRange(){var vh=window.innerHeight;return [Math.round(vh*0.15),Math.round(vh*0.85)-112];}
+function placeTrack(){var rg=hdRange();hdt.style.top=rg[0]+'px';hdt.style.height=Math.max(0,rg[1]+96-rg[0])+'px';}
 function placeHd(){var de=document.documentElement,max=de.scrollHeight-window.innerHeight;var r=max>0?Math.min(1,Math.max(0,window.scrollY/max)):0;var rg=hdRange();curTop=Math.round(rg[0]+r*(rg[1]-rg[0]));hd.style.transform='translateY('+curTop+'px)';}
-function hideSoon(){clearTimeout(ht);ht=setTimeout(function(){if(!dragH)hd.classList.remove('show');},1500);}
+function showHd(){placeTrack();hd.classList.add('show');hdt.classList.add('show');}
+function hideSoon(){clearTimeout(ht);ht=setTimeout(function(){if(!dragH){hd.classList.remove('show');hdt.classList.remove('show');}},1500);}
 window.addEventListener('scroll',function(){
  var de=document.documentElement,max=de.scrollHeight-window.innerHeight;
  if(max<=40)return;
  if(!dragH)placeHd();
- hd.classList.add('show');hideSoon();
+ showHd();hideSoon();
 },{passive:true});
-hd.addEventListener('pointerdown',function(e){dragH=true;hd.classList.add('grab');try{hd.setPointerCapture(e.pointerId);}catch(_){}clearTimeout(ht);dOff=e.clientY-curTop;e.preventDefault();});
+hd.addEventListener('pointerdown',function(e){dragH=true;hd.classList.add('grab');hdt.classList.add('grab');try{hd.setPointerCapture(e.pointerId);}catch(_){}clearTimeout(ht);dOff=e.clientY-curTop;e.preventDefault();});
 hd.addEventListener('pointermove',function(e){
  if(!dragH)return;
  var de=document.documentElement,max=de.scrollHeight-window.innerHeight,rg=hdRange();
@@ -580,7 +594,7 @@ hd.addEventListener('pointermove',function(e){
  curTop=Math.round(top);hd.style.transform='translateY('+curTop+'px)';
  window.scrollTo(0,r*max);
 });
-function endH(){if(!dragH)return;dragH=false;hd.classList.remove('grab');hideSoon();}
+function endH(){if(!dragH)return;dragH=false;hd.classList.remove('grab');hdt.classList.remove('grab');hideSoon();}
 hd.addEventListener('pointerup',endH);hd.addEventListener('pointercancel',endH);
 
 /* wiring */
