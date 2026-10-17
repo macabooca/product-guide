@@ -1,4 +1,4 @@
-var CACHE_NAME = 'product-guide-v4';
+var CACHE_NAME = 'product-guide-v6';
 var FILES = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', function (e) {
